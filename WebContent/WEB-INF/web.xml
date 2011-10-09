@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>InteracoesMedicamentosas</display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>PrincipioAtivo</display-name>
+    <servlet-name>PrincipioAtivo</servlet-name>
+    <servlet-class>presentation.principioativoController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PrincipioAtivo</servlet-name>
+    <url-pattern>/PrincipioAtivo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>IndiceRisco</display-name>
+    <servlet-name>IndiceRisco</servlet-name>
+    <servlet-class>presentation.indiceriscoController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>IndiceRisco</servlet-name>
+    <url-pattern>/IndiceRisco</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>IndiceConfiabilidade</display-name>
+    <servlet-name>IndiceConfiabilidade</servlet-name>
+    <servlet-class>presentation.indiceconfiabilidadeController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>IndiceConfiabilidade</servlet-name>
+    <url-pattern>/IndiceConfiabilidade</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>IndiceGravidade</display-name>
+    <servlet-name>IndiceGravidade</servlet-name>
+    <servlet-class>presentation.indicegravidadeController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>IndiceGravidade</servlet-name>
+    <url-pattern>/IndiceGravidade</url-pattern>
+  </servlet-mapping>
+  
+  
+</web-app>
