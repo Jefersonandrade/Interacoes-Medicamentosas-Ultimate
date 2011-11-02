@@ -61,7 +61,7 @@ public class principioativoController extends HttpServlet {
 			}
 		
 			//Chamar Página JSP
-			RequestDispatcher editar = request.getRequestDispatcher("principioAtivoEditar.jsp");
+			RequestDispatcher editar = request.getRequestDispatcher("principioativoEditar.jsp");
 			editar.forward(request, response);
 			return;
 			
@@ -97,7 +97,7 @@ public class principioativoController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			// Recebe os parâmetros do formulário
-			String cod = request.getParameter("id");
+			String cod = request.getParameter("cod");
 			String nome = request.getParameter("nome");
 			
 			PrincipioAtivo principioativo;

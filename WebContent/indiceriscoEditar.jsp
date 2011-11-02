@@ -23,6 +23,7 @@
         <div class="form">
           <table width="570" style=" height:50px; width:50px">
         <tr>
+       		<input type="hidden" name="cod" id="cod" value="<% if(indicerisco != null){ out.print(indicerisco.getId()); } %>" />
         	<td>
            	<h2>Nome:</h2>
             </td>
@@ -37,7 +38,7 @@
         	<td>
        		<h2>Descrição: </h2></td>
             <td>
-            	  <textarea name="descricao" id="descricao" cols="45" rows="5" value="<% if(indicerisco != null){ out.print(indicerisco.getDescricao()); } %>"></textarea>
+            	  <textarea name="descricao" id="descricao" cols="45" rows="5" ><% if(indicerisco != null){ out.print(indicerisco.getDescricao()); } %></textarea>
        	    </td>
             
          </table>

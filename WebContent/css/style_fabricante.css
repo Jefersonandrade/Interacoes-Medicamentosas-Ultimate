@@ -43,7 +43,7 @@ padding-top:30px;
 #container {
     background: url('../images_1/container.png') no-repeat;
     width: 754px;
-    height: 866px;
+    height: 566px;
     margin: 20px auto;
     padding: 50px 0px;
     overflow: hidden;
@@ -76,6 +76,7 @@ padding-top:30px;
         font-size: 12px;
         font-weight: bold;
     }
+    
 	/*Começa o compentario
 
 	        #container table td {
@@ -111,6 +112,24 @@ padding-top:30px;
 		
 	}
 	
+	#container textarea {
+        background: url('../images_1/textarea.png') no-repeat;
+        color: #888;
+        border: 1px solid #ccc;
+        font-family: Cantarell, Verdana, sans-serif;
+        font-weight: bold;
+        font-size: 12px;
+        /*width: 300px;*/
+        /*height: 130px;*/
+        padding: 0 20px;
+        margin: 20px 0;
+        float: left;
+        
+        border-radius: 6px;
+        -moz-border-radius: 6px;
+        -webkit-border-radius: 6px;
+    }
+	
 		/*
     #container input, #container select {
        	background: url('images_1/input.png') no-repeat;
@@ -144,6 +163,12 @@ padding-top:30px;
 		-moz-border-radius: 6px;
 		-webkit-border-radius: 6px;
 	}
+	
+	#container h3{
+		color: #888;
+		font-family: Cantarell, Verdana, sans-serif;
+		font-weight: bold;
+	}
 
 	    #container input.submit {
             background: url('../images/salvar.png') no-repeat;
@@ -154,7 +179,7 @@ padding-top:30px;
             position: relative;
             bottom: 2px;
             left: 655px;
-			margin-left: -50px;
+			margin: -20px -20px -30px -70px;
         }
             #container input.submit:focus { border: none; }
         
@@ -163,7 +188,7 @@ padding-top:30px;
         #container input.error { border: 1px solid red; }
         #container input.valid { border: 1px solid #1FFF00; }
         
-        #container input:focus, #container select:focus {
+        #container input:focus, #container select:focus, #container textarea:focus {
             border: 1px solid #a90329;
             color: #a90329;
         }

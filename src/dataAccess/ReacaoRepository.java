@@ -52,12 +52,12 @@ public class ReacaoRepository
 	}
 	
 	public List getTop10ByName() {
-		return manager.createQuery("select r from Reacao r order by r.nome")
+		return manager.createQuery("select r from Reacao r order by r.id")
 		.setMaxResults(10).getResultList();
 	}
 	
 	public List getAllByName() {
-		return manager.createQuery("select r from Reacao r order by r.nome")
+		return manager.createQuery("select r from Reacao r order by r.id")
 		.getResultList();
 	}
 

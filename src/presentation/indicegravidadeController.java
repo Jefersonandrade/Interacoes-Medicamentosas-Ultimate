@@ -78,7 +78,7 @@ public class indicegravidadeController extends HttpServlet {
 			}
 		}
 		
-		//Gera uma listagem de TODOS os IndiceConfiabilidade
+		//Gera uma listagem de TODOS os IndiceGravidade
 		List indicesgravidades = repositorio.getAllByName();
 		
 		//Passa a listagem para a pagina JSP
@@ -95,7 +95,7 @@ public class indicegravidadeController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			// Recebe os parâmetros do formulário
-			String cod = request.getParameter("id");
+			String cod = request.getParameter("cod");
 			String nome = request.getParameter("nome");
 			String descricao = request.getParameter("descricao");
 			
@@ -111,11 +111,14 @@ public class indicegravidadeController extends HttpServlet {
 			indicegravidade.setDescricao(descricao);
 			repositorio.Save(indicegravidade);
 			
+			// Gera uma listagem de TODOS os Indices de Confiabilidade
+			List indicesgravidades = repositorio.getAllByName();
+			
 			// Passa a listagem para a página JSP
-			request.setAttribute("indicegravidade", indicegravidade);
+			request.setAttribute("indicesgravidades", indicegravidade);
 			
 			// Chamar a página JSP
-			RequestDispatcher listagem = request.getRequestDispatcher("indicegravidadeEditar.jsp");
+			RequestDispatcher listagem = request.getRequestDispatcher("indicesgravidadesListagem.jsp");
 			listagem.forward(request, response);
 		}
 		catch(Exception ex){

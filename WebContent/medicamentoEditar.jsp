@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-    <%@ page import="domainModel.Medicamento,domainModel.Fabricante, java.util.*" %>
+<%@ page import="domainModel.Medicamento, domainModel.Fabricante, java.util.*, java.util.Iterator" %>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Sistema de Consulta de Interações Medicamentosas</title>
 <link href="css/style_medicamento.css" rel="stylesheet" type="text/css" />
@@ -13,66 +13,65 @@
 <body>
 <%
 	Medicamento medicamento = (Medicamento) request.getAttribute("medicamento");
-	List<Fabricante> fabricantes = (List<Fabricante>) request.getAttribute("fabricantes");
-	
-	%>
+	List<Fabricante> fabricante = (List<Fabricante>) request.getAttribute("fabricantes");
+%>
 <div id="container">
 <form id="form_fabricantes" method="post" action="">
 	<div id="first_step">
-    	<h1> 
-        Cadastro de <span>Medicamentos</span>
-</h1>
+    	<h1>Cadastro de <span>Medicamentos</span></h1>
         <div class="form1">
-        <table width="100%" border="1" cellpadding="2" cellspacing="0" align="left">
-        <tr>
-          <td><table width="100%" border="1" cellpadding="2" cellspacing="0">
-            <tr>
-              <td width="22%" align="right">* Nome:</td>
-              <td width="78%"><input name="nome" type="text" id="nome" size="52" maxlength="45" value="<% if(medicamento != null){ out.print(medicamento.getNomecomercial()); } %>" /></td>
-            </tr>
-             <tr>
-              <th><br /></th>
-            </tr>
-            <tr>
-              <td align="right">* Fabricante: </td>
-              <td><select name="fabricante" id="fabricante">
-              <%for(Fabricante f : fabricantes){ %>
-                <option value="<%=f.getId() %>"><%=f.getNomeempresa() %></option>
-              <%} %>
-              </select></td>
-            </tr>
-             <tr>
-              <th><br /></th>
-            </tr>
-            <tr>
-              <td align="right">Forma Farmaceutica: </td>
-              <td><input name="a" type="text" id="formafarmaceutica" size="25" maxlength="45" value="<% if(medicamento != null){ out.print(medicamento.getFormafarmaceutica()); } %>" /></td>
-            </tr>
-             <tr>
-              <th><br /></th>
-            </tr>
-            <tr>
-              <td align="right">* Número Registro:</td>
-              <td><input name="num_registro" type="text" id="num_registro" size="25" maxlength="45" value="" />
-              * Validade: 
-                <input name="validade" type="text" id="validade" size="11" maxlength="10" value="" />
-              </td>
-            </tr>
-            <tr>
-              <th><br /></th>
-            </tr>
-            <tr>
-          </table></td>
-        </tr>
-        </table>          
-      </form>
-      </div>      
-<div class="clear">
-        	<input id="submit" class="submit" type="submit" value="" name="submit" />   
-        </div>
-        </table>
-        <div class="clear">
-        </div>        
+			<table width="100%" border="1" cellpadding="2" cellspacing="0" align="left">
+				<tr>
+					<input type="hidden" name="cod" id="cod" value="<% if(medicamento != null){ out.print(medicamento.getId()); } %>" />
+					<td>
+					  <table width="100%" border="1" cellpadding="2" cellspacing="0">
+							<tr>
+							  <td width="22%" align="right">* Nome:</td>
+							  <td width="78%"><input name="nomecomercial" type="text" id="nomecomercial" size="52" maxlength="45" value="<% if(medicamento != null){ out.print(medicamento.getNomecomercial()); } %>" /></td>
+							</tr>
+							<tr>
+							  <th><br /></th>
+							</tr>
+							<tr>
+							  <td align="right">* Fabricante: </td>
+							  <td><select name="fabricantes" id="fabricantes">
+									<% Iterator it = fabricante.iterator();
+									while(it.hasNext()){
+										Fabricante f =(Fabricante)it.next(); %>
+										<option value="<%=f.getId() %>"><%=f.getNomefantasia()%></option>
+									
+									<%} %>
+								</select></td>
+							</tr>
+							<tr>
+							  <th><br /></th>
+							</tr>
+							<tr>
+							  <td align="right">Forma Farmaceutica: </td>
+							  <td><input name="formafarmaceutica" type="text" id="formafarmaceutica" size="25" maxlength="45" value="<% if(medicamento != null){ out.print(medicamento.getFormafarmaceutica()); } %>" /></td>
+							</tr>
+							<tr>
+							  <th><br /></th>
+							</tr>
+							<tr>
+							  <td align="right">* Número Registro:</td>
+							  <td><input name="numregistro" type="text" id="numregistro" size="25" maxlength="45" value="<% if(medicamento != null){ out.print(medicamento.getNumregistro()); } %>" />
+							  * Validade: 
+								<input name="validade" type="text" id="validade" size="11" maxlength="10" value="" />
+							  </td>
+							</tr>
+							<tr>
+							  <th><br /></th>
+							</tr>
+					  </table>
+					</td>
+				</tr>
+			</table>
+		</div>
+    </div> 
+	<div class="clear">
+		<input id="submit" class="submit" type="submit" value="" name="submit" />   
+	</div>
 </form>
 </div>
 </body>

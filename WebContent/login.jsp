@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Sistema de Consulta de Interações Medicamentosas</title>
-<link href="../InteracoesMedicamentosas/css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -18,12 +18,9 @@
 %>
 
 <div id="container">
-<form id="form_login" method="post" action="">
+<form id="form_login" method="post" action="/InteracoesMedicamentosas/Login">
 	<div id="first_step">
-    	<h1> 
-        Sistema de Consulta de <br>
-
-		<span>Interações Medicamentosas</span>
+    	<h1>Sistema de Consulta de <br><span>Interações Medicamentosas</span>
         </h1>
         <div class="form">
           <table width="570" style=" height:50px; width:50px">
@@ -42,13 +39,6 @@
             <td>
             	<input id="password" type="password" name="senha"/>
             </td>
-            <tr>
-           	  <td>
-              </td>
-                <td>
-               		Ainda Não Tem Cadastro?
-                </td>
-            </tr>
 
          </table>
       </div>      

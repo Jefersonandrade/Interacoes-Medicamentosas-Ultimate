@@ -52,12 +52,12 @@ public class FabricanteRepository {
 	
 	//Lista de 10 Fabricantes em Ordem Alfabetica
 	public List getTop10ByName(){
-		return manager.createQuery("select fa from Fabricante fa order by m.nome")
+		return manager.createQuery("select fa from Fabricante fa order by fa.nomefantasia")
 		.setMaxResults(10).getResultList();
 	}
 	//Lista de Todos os Fabricantes em Ordem Alfabetica
 	public List getAllbyName(){
-		return manager.createQuery("select fa from Fabricante fa order by m.nome")
+		return manager.createQuery("select fa from Fabricante fa order by fa.nomefantasia")
 		.getResultList();
 	}
 }

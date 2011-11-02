@@ -2,6 +2,8 @@ package presentation;
 
 import java.io.IOException;
 
+
+
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -14,7 +16,12 @@ import javax.servlet.http.HttpServletResponse;
 import dataAccess.IndiceRiscoRepository;
 import dataAccess.PrincipioAtivoRepository;
 import dataAccess.ReacaoRepository;
+import dataAccess.IndiceConfiabilidadeRepository;
+import dataAccess.IndiceGravidadeRepository;
+
 import domainModel.IndiceRisco;
+import domainModel.IndiceConfiabilidade;
+import domainModel.IndiceGravidade;
 import domainModel.PrincipioAtivo;
 import domainModel.Reacao;
 
@@ -36,6 +43,12 @@ public class reacaoController extends HttpServlet {
 	
 	//Declaração do Repositorio Indice de Risco
 	IndiceRiscoRepository irrepositorio;
+	
+	//Declaração do Repositorio Indice de Confiabilidade
+	IndiceConfiabilidadeRepository icrepositorio;
+	
+	//Declaração do Repositorio Indice de Gravidade
+	IndiceGravidadeRepository igrepositorio;
     
 	//Construtor do Servlet
     public reacaoController() {
@@ -49,6 +62,12 @@ public class reacaoController extends HttpServlet {
         
         //Inicialização do Repositório de Indice de Risco
         irrepositorio = new IndiceRiscoRepository();
+        
+      //Inicialização do Repositório de Indice de Confiabilidade
+        icrepositorio = new IndiceConfiabilidadeRepository();
+        
+      //Inicialização do Repositório de Indice de Gravidade
+        igrepositorio = new IndiceGravidadeRepository();
     }
 
     /**
@@ -74,6 +93,23 @@ public class reacaoController extends HttpServlet {
 				}
 				
 			}
+			
+			//Puxando (Listando) dados de Principios Ativos
+			PrincipioAtivoRepository parepositorio = new PrincipioAtivoRepository();
+			request.setAttribute("principiosativos", parepositorio.getAllByName());
+			
+			//Puxando (Listando) dados de Indice de Risco
+			IndiceRiscoRepository irrepositorio = new IndiceRiscoRepository();
+			request.setAttribute("indicesriscos", irrepositorio.getAllByName());
+			
+			//Puxando (Listando) dados de Indice Gravidade
+			IndiceGravidadeRepository igrepositorio = new IndiceGravidadeRepository();
+			request.setAttribute("indicesgravidades", igrepositorio.getAllByName());
+			
+			//Puxando (Listando) dados de Indice Confiabilidade
+			IndiceConfiabilidadeRepository icrepositorio = new IndiceConfiabilidadeRepository();
+			request.setAttribute("indicesconfiabilidades", icrepositorio.getAllByName());
+			
 			//Chamar Página JSP
 			RequestDispatcher editar = request.getRequestDispatcher("reacaoEditar.jsp");
 			editar.forward(request, response);
@@ -111,15 +147,15 @@ public class reacaoController extends HttpServlet {
 	{
 		try {
 			// Recebe os parâmetros do formulário
-			String cod = request.getParameter("id");
+			String cod = request.getParameter("cod");
 			String conduta = request.getParameter("conduta");
 			String discussao = request.getParameter("discussao");
 			String sumario = request.getParameter("sumario");
-			String gravidade = request.getParameter("gravidade");
-			String indiceconfiabilidade = request.getParameter("indiceconfiabilidade");
-			PrincipioAtivo principioativo = parepositorio.Open(Integer.parseInt(request.getParameter("idprincipiosativos").toString()));
-			PrincipioAtivo principioativo2 = parepositorio.Open(Integer.parseInt(request.getParameter("idprincipiosativos2").toString()));
-			IndiceRisco indicerisco = irrepositorio.Open(Integer.parseInt(request.getParameter("idindicesriscos").toString()));
+			PrincipioAtivo principioativo = parepositorio.Open(Integer.parseInt(request.getParameter("principioativo").toString()));
+			PrincipioAtivo principioativo2 = parepositorio.Open(Integer.parseInt(request.getParameter("principioativo2").toString()));
+			IndiceRisco indicerisco = irrepositorio.Open(Integer.parseInt(request.getParameter("indicerisco").toString()));
+			IndiceGravidade indicegravidade = igrepositorio.Open(Integer.parseInt(request.getParameter("indicegravidade").toString()));
+			IndiceConfiabilidade indiceconfiabilidade = icrepositorio.Open(Integer.parseInt(request.getParameter("indiceconfiabilidade").toString()));
 			
 			Reacao reacao;
 			
@@ -132,15 +168,15 @@ public class reacaoController extends HttpServlet {
 			reacao.setConduta(conduta);
 			reacao.setDiscussao(discussao);
 			reacao.setSumario(sumario);
-			reacao.setGravidade(gravidade);
-			reacao.setIndiceconfiabilidade(indiceconfiabilidade);
+			reacao.setIdindicesriscos(indicerisco);
+			reacao.setIdindicesgravidades(indicegravidade);
+			reacao.setIdindicesconfiabilidades(indiceconfiabilidade);
 			reacao.setIdprincipiosativos(principioativo);
 			reacao.setIdprincipiosativos2(principioativo2);
-			reacao.setIdindicesriscos(indicerisco);	
 			
 			repositorio.Save(reacao);
 			
-			// Gera uma listagem de reações
+			//Gera uma listagem de reações
 			List reacoes = repositorio.getAllByName();
 			
 			// Passa a listagem para a página JSP
@@ -152,8 +188,6 @@ public class reacaoController extends HttpServlet {
 		}
 		catch(Exception ex){
 			ex.printStackTrace();
-		}	
-			
+		}		
 	}
-
 }

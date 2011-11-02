@@ -15,9 +15,8 @@
                 <div id="texto">
                 	<div id="first_step">
 						<ul ><h1>
-							<li><a title="Cadastrar" alt="cadastrar" href="" ><span><br>| Cadastrar |<br><br></span></a></li>
-							<li><a title="Relatorio" alt="relatorio" href=""><span><br>| Relátorio |<br><br></span></a> </li>
-							<li><a title="Consulta Interações Medicamentosas" alt="consulta interacao" href="" target="_blank" ><span><br>|Consulta Interações Medicamentosa |<br><br></span></a></li>
+							<li><a title="Cadastrar" alt="cadastrar" href="cad.jsp" ><span><br>| Cadastrar |<br><br></span></a></li>
+							<li><a title="Consulta Interações Medicamentosas" alt="consulta interacao" href="" ><span><br>|Consulta Interações Medicamentosa |<br><br></span></a></li>
 							<li><a title="Sair do sitema" alt="Sair do sitema" href="" ><span><br>| Sair |<br><br></span></a></li>
 						</ul></h1>
 						<div style="background:#CCC;">

@@ -95,7 +95,7 @@ public class indiceconfiabilidadeController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			// Recebe os parâmetros do formulário
-			String cod = request.getParameter("id");
+			String cod = request.getParameter("cod");
 			String nome = request.getParameter("nome");
 			String descricao = request.getParameter("descricao");
 			
@@ -111,11 +111,15 @@ public class indiceconfiabilidadeController extends HttpServlet {
 			indiceconfiabilidade.setDescricao(descricao);
 			repositorio.Save(indiceconfiabilidade);
 			
+			
+			// Gera uma listagem de TODOS os Indices de Confiabilidade
+			List indicesconfiabilidades = repositorio.getAllByName();
+			
 			// Passa a listagem para a página JSP
-			request.setAttribute("indiceconfiabilidade", indiceconfiabilidade);
+			request.setAttribute("indicesconfiabilidades", indicesconfiabilidades);
 			
 			// Chamar a página JSP
-			RequestDispatcher listagem = request.getRequestDispatcher("indiceconfiabilidadeEditar.jsp");
+			RequestDispatcher listagem = request.getRequestDispatcher("indicesconfiabilidadesListagem.jsp");
 			listagem.forward(request, response);
 		}
 		catch(Exception ex){

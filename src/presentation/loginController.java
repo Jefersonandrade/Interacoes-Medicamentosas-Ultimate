@@ -59,13 +59,13 @@ public class loginController extends HttpServlet {
 					int id = user.getId();
 					HttpSession session = request.getSession();
 					session.setAttribute("user_id", Integer.toString(id));
-					if(user.getTipo().equalsIgnoreCase("Administrador")){
+					if(user.getTipo().equalsIgnoreCase("admin")){
 						//Se for administrador vai para a pagina.jsp
-						request.getRequestDispatcher("home.jsp").forward(request, response);
+						request.getRequestDispatcher("cad.jsp").forward(request, response);
 						return;
 					}else{
 						//se nao for pagina.jsp
-						request.getRequestDispatcher("home.jsp").forward(request, response);
+						request.getRequestDispatcher("consulta.jsp").forward(request, response);
 						return;
 					}
 					

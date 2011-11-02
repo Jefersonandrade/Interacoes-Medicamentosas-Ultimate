@@ -10,11 +10,11 @@ public class Reacao {
 	 * conduta
 	 * discussao
 	 * sumario
-	 * gravidade
-	 * indiceconfiabilidade
+	 * idindicesgravidades
+	 * idindicesconfiabilidades
+	 * idindicesriscos
 	 * idprincipiosativos1
 	 * idprincipiosativos2
-	 * idindicesriscos
 	 */
 	
 	
@@ -32,14 +32,16 @@ public class Reacao {
 	@Column(name="sumario")
 	private String sumario;
 	
-	@Column(name="gravidade")
-	private String gravidade;
-	
-	@Column(name="indiceconfiabilidade")
-	private String indiceconfiabilidade;
+	@ManyToOne(fetch=FetchType.LAZY, cascade={CascadeType.REFRESH})
+	@JoinColumn(name="idindicesgravidades")
+	private IndiceGravidade idindicesgravidades;
 	
 	@ManyToOne(fetch=FetchType.LAZY, cascade={CascadeType.REFRESH})
-	@JoinColumn(name="idprincipiosativos")
+	@JoinColumn(name="idindicesconfiabilidades")
+	private IndiceConfiabilidade idindicesconfiabilidades;
+	
+	@ManyToOne(fetch=FetchType.LAZY, cascade={CascadeType.REFRESH})
+	@JoinColumn(name="idprincipiosativos1")
 	private PrincipioAtivo idprincipiosativos;
 	
 	@ManyToOne(fetch=FetchType.LAZY, cascade={CascadeType.REFRESH})
@@ -82,20 +84,21 @@ public class Reacao {
 		this.sumario = sumario;
 	}
 
-	public String getGravidade() {
-		return gravidade;
+	public IndiceGravidade getIdindicesgravidades() {
+		return idindicesgravidades;
 	}
 
-	public void setGravidade(String gravidade) {
-		this.gravidade = gravidade;
+	public void setIdindicesgravidades(IndiceGravidade idindicesgravidades) {
+		this.idindicesgravidades = idindicesgravidades;
 	}
 
-	public String getIndiceconfiabilidade() {
-		return indiceconfiabilidade;
+	public IndiceConfiabilidade getIdindicesconfiabilidades() {
+		return idindicesconfiabilidades;
 	}
 
-	public void setIndiceconfiabilidade(String indiceconfiabilidade) {
-		this.indiceconfiabilidade = indiceconfiabilidade;
+	public void setIdindicesconfiabilidades(
+			IndiceConfiabilidade idindicesconfiabilidades) {
+		this.idindicesconfiabilidades = idindicesconfiabilidades;
 	}
 
 	public PrincipioAtivo getIdprincipiosativos() {

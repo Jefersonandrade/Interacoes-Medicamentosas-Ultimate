@@ -40,7 +40,7 @@ label{
     #texto h1, #texto h2 {
         font-size: Cantarell, Verdana, sans-serif;
         text-align: center;
-        font-size: 24px;
+        font-size: 17px;
         text-shadow: 1px 1px 2px #222;
     }
         #texto h1 span { color: #a90329; }
@@ -199,6 +199,7 @@ label{
                     border-bottom:3px solid #EDEDED;
                     padding: 2px 10px;
                     float:left;
+                    font-size: 22px;
             }
           input, select, textarea {
                 color: #666;

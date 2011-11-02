@@ -1,6 +1,9 @@
 package domainModel;
 
+import java.util.List;
+
 import javax.persistence.*;
+
 
 @Entity
 @Table(name="medicamentos")
@@ -11,7 +14,7 @@ public class Medicamento {
 	 * nomecomercial
 	 * numregistro
 	 * validade
-	 * formapagamento
+	 * formafarmaceutica
 	 * idfabricantes
 	 * */
 	
@@ -33,12 +36,12 @@ public class Medicamento {
 	private String formafarmaceutica;
 	
 	@ManyToOne(fetch=FetchType.LAZY, cascade={CascadeType.REFRESH})
-	@JoinColumn(name="idfabricante")
+	@JoinColumn(name="idfabricantes")
 	private Fabricante fabricante;
 	
-	@ManyToOne(fetch=FetchType.LAZY, cascade={CascadeType.REFRESH})
-	@JoinColumn(name="id_principioativo")
-	private PrincipioAtivo principioativo;
+	@OneToMany(fetch=FetchType.LAZY)
+	@JoinColumn(name="principiosativos")
+	private List<PrincipioAtivo> principiosativos;
 
 	public int getId() {
 		return id;
@@ -80,14 +83,6 @@ public class Medicamento {
 		this.formafarmaceutica = formafarmaceutica;
 	}
 
-	public PrincipioAtivo getPrincipioativo() {
-		return principioativo;
-	}
-
-	public void setPrincipioativo(PrincipioAtivo principioativo) {
-		this.principioativo = principioativo;
-	}
-	
 	public Fabricante getFabricante() {
 		return fabricante;
 	}
@@ -95,4 +90,13 @@ public class Medicamento {
 	public void setFabricante(Fabricante fabricante){
 		this.fabricante = fabricante;	
 	}
+
+	public List<PrincipioAtivo> getPrincipiosativos() {
+		return principiosativos;
+	}
+
+	public void setPrincipiosativos(List<PrincipioAtivo> principiosativos) {
+		this.principiosativos = principiosativos;
+	}
+
 }

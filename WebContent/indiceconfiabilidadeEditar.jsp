@@ -15,14 +15,15 @@
 	IndiceConfiabilidade indiceconfiabilidade = (IndiceConfiabilidade) request.getAttribute("indiceconfiabilidade");
 	%>
 <div id="container_">
-<form id="form_login" action="/InteracoesMedicamentosas/IndiceConfiabilidade" method="post">
+<form id="form_indiceconfiabilidade" action="/InteracoesMedicamentosas/IndiceConfiabilidade" method="post">
 	<div id="first_step">
     	<h1> 
-        Cadastro de		<span>Indice de Confiabilidade</span>
+        Cadastro de <span>Indice de Confiabilidade</span>
       </h1>
         <div class="form">
           <table width="570" style=" height:50px; width:50px">
         <tr>
+        	<input type="hidden" name="cod" id="cod" value="<% if(indiceconfiabilidade != null){ out.print(indiceconfiabilidade.getId()); } %>" />
         	<td>
            	<h2>Nome:</h2>
             </td>
@@ -37,16 +38,14 @@
         	<td>
        		<h2>Descrição: </h2></td>
             <td>
-            	  <textarea name="descricao" id="descricao" cols="45" rows="5" value="<% if(indiceconfiabilidade != null){ out.print(indiceconfiabilidade.getDescricao()); } %>"></textarea>
+            	  <textarea name="descricao" id="descricao" cols="45" rows="5" ><% if(indiceconfiabilidade != null){ out.print(indiceconfiabilidade.getDescricao()); } %></textarea>
        	    </td>
             
          </table>
       </div>      
-<div class="clear">
-        	<input id="submit_first" class="submit" type="submit" value="" name="submit_firt" />
-</div>
-<div class="clear">
-</div>        
+		<div class="clear">
+		        	<input id="submit_first" class="submit" type="submit" value="" name="submit_firt" />
+		</div>       
     </div>
 </form>
 </div>

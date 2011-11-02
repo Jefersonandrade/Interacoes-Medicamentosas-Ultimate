@@ -65,7 +65,7 @@ public class UsuarioRepository {
 	
 	public Usuario OpenByLogin(String usuario){
 		try{
-			return (Usuario) manager.createQuery("select u from Usuario u where u.email =:log")
+			return (Usuario) manager.createQuery("select u from Usuario u where u.user =:log")
 			.setParameter("log", usuario)
 			.getSingleResult();
 		}catch(Exception ex){

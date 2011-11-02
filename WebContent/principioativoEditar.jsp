@@ -14,13 +14,15 @@
 <%
 	PrincipioAtivo principioativo = (PrincipioAtivo) request.getAttribute("principioativo");
 	%>
-<div id="container">
+<div id="container_">
 <form id="form_login" method="post" action="/InteracoesMedicamentosas/PrincipioAtivo">
 	<div id="first_step">
+		<br></br><br></br><br></br>
     	<h1>Cadastro de	<span>Princípios Ativos</span></h1>
         <div class="form">
 			<table width="570" style=" height:50px; width:50px">
 				<tr>
+					<input type="hidden" name="cod" id="cod" value="<% if(principioativo != null){ out.print(principioativo.getId()); } %>" />
 					<td>
 						<h2>Principio Ativo</h2>
 					</td>
@@ -34,7 +36,7 @@
 			</table>
 		</div>      
 		<div class="clear">
-			<input id="submit_first" class="submit" type="submit" value="" name="submit_firt" />        
+			<input id="submit" class="submit" type="submit" value="" name="submit" />        
 		</div>
 	</div>
 </form>

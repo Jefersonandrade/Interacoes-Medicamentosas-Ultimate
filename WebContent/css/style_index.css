@@ -43,7 +43,7 @@ padding-top:30px;
 #container {
     background: url('../images_1/container.png') no-repeat;
     width: 754px;
-    height: 866px;
+    height: 556px;
     margin: 20px auto;
     padding: 50px 0px;
     overflow: hidden;
@@ -62,7 +62,7 @@ padding-top:30px;
         font-size: 24px;
         text-shadow: 1px 1px 2px #222;
     }
-        #container h1 span { color: #a90329; }
+        #container h1 span { color: #a90329;}
       
     #container h2 {
         color: #888;
@@ -71,28 +71,26 @@ padding-top:30px;
         text-shadow: none;
     }
     
+    #container h3 {
+    	font-size: Cantarell, Verdana, sans-serif;
+        text-align: center;
+        font-size: 14px;
+        text-shadow: 1px 1px 2px #222;color: #888;
+        text-align: justify;
+        text-shadow: none;
+    }
+    
     #container table {
         margin: 0px 0px;
         font-size: 12px;
         font-weight: bold;
+        width: 754px;
     }
-	/*Começa o compentario
-
-	        #container table td {
-            padding: 5px 10px;
-        }
-		Começa o compentario
-
-		
-            #container table td:nth-child(2) {
-                color: #a90329;
-            }   
-			#container input, #container select {
-				
-				
-			
-			}
-	*/
+    
+		#container table td {
+			padding: 5px 20px;
+	    }
+ 
     #container input, #container select{
 		background: url('../images_1/input.png') no-repeat;
         color: #888;

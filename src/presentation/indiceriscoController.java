@@ -95,7 +95,7 @@ public class indiceriscoController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			// Recebe os parâmetros do formulário
-			String cod = request.getParameter("id");
+			String cod = request.getParameter("cod");
 			String nome = request.getParameter("nome");
 			String descricao = request.getParameter("descricao");
 			
@@ -111,11 +111,14 @@ public class indiceriscoController extends HttpServlet {
 			indicerisco.setDescricao(descricao);
 			repositorio.Save(indicerisco);
 			
+			// Gera uma listagem de TODOS os Usuarios
+			List indicesriscos = repositorio.getAllByName();
+			
 			// Passa a listagem para a página JSP
-			request.setAttribute("indicerisco", indicerisco);
+			request.setAttribute("indicesriscos", indicesriscos);
 			
 			// Chamar a página JSP
-			RequestDispatcher listagem = request.getRequestDispatcher("indiceriscoEditar.jsp");
+			RequestDispatcher listagem = request.getRequestDispatcher("indicesriscosListagem.jsp");
 			listagem.forward(request, response);
 		}
 		catch(Exception ex){

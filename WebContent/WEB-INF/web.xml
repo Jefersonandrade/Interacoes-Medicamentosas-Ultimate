@@ -2,11 +2,16 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>InteracoesMedicamentosas</display-name>
   <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>Login</welcome-file>
   </welcome-file-list>
+  <filter>
+  	<filter-name>Autenticacao</filter-name>
+  	<filter-class>presentation.autenticacaoFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>Autenticacao</filter-name>
+  	<servlet-name>PrincipioAtivo</servlet-name>
+  </filter-mapping>
   <servlet>
     <description></description>
     <display-name>PrincipioAtivo</display-name>
@@ -47,6 +52,54 @@
     <servlet-name>IndiceGravidade</servlet-name>
     <url-pattern>/IndiceGravidade</url-pattern>
   </servlet-mapping>
-  
-  
+  <servlet>
+    <description></description>
+    <display-name>Fabricante</display-name>
+    <servlet-name>Fabricante</servlet-name>
+    <servlet-class>presentation.fabricanteController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Fabricante</servlet-name>
+    <url-pattern>/Fabricante</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Medicamento</display-name>
+    <servlet-name>Medicamento</servlet-name>
+    <servlet-class>presentation.medicamentoController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Medicamento</servlet-name>
+    <url-pattern>/Medicamento</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Usuario</display-name>
+    <servlet-name>Usuario</servlet-name>
+    <servlet-class>presentation.usuarioController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Usuario</servlet-name>
+    <url-pattern>/Usuario</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Reacao</display-name>
+    <servlet-name>Reacao</servlet-name>
+    <servlet-class>presentation.reacaoController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Reacao</servlet-name>
+    <url-pattern>/Reacao</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Login</display-name>
+    <servlet-name>Login</servlet-name>
+    <servlet-class>presentation.loginController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Login</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -1,6 +1,7 @@
 package presentation;
 
 import java.io.IOException;
+
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -16,7 +17,7 @@ import domainModel.Fabricante;
 /**
  * Servlet implementation class principioativoController
  */
-@WebServlet("/FabricanteController")
+@WebServlet("/Fabricantes")
 public class fabricanteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -97,18 +98,23 @@ public class fabricanteController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			// Recebe os parâmetros do formulário
-			String cod = request.getParameter("id");
-			String nomeempresa = request.getParameter("nomeempresa");
+			String cod = request.getParameter("cod");
+			String nomefantasia = request.getParameter("nomefantasia");
+			String razaosocial = request.getParameter("razaosocial");
 			String cnpj = request.getParameter("cnpj");
+			String responsaveltecnico = request.getParameter("responsaveltecnico");
+			String crfresponsavel = request.getParameter("crfresponsavel");
 			String endereco = request.getParameter("endereco");
 			String numero = request.getParameter("numero");
 			String bairro = request.getParameter("bairro");
 			String complemento = request.getParameter("complemento");
-			String cep = request.getParameter("cep");
+			String cidade = request.getParameter("cidade");
 			String uf = request.getParameter("uf");
+			String cep = request.getParameter("cep");
 			String telefone = request.getParameter("telefone");
-			String responsaveltecnico = request.getParameter("responsaveltecnico");
-			String crresponsavel = request.getParameter("crresponsavel");
+			String ramal = request.getParameter("ramal");
+			String email = request.getParameter("email");
+			String site = request.getParameter("site");
 			
 			Fabricante fabricante;
 			
@@ -118,18 +124,27 @@ public class fabricanteController extends HttpServlet {
 			else
 				fabricante = new Fabricante();
 			
-			fabricante.setNomeempresa(nomeempresa);
+			fabricante.setNomefantasia(nomefantasia);
+			fabricante.setRazaosocial(razaosocial);
 			fabricante.setCnpj(cnpj);
+			fabricante.setResponsaveltecnico(responsaveltecnico);
+			fabricante.setCrfresponsavel(crfresponsavel);
 			fabricante.setEndereco(endereco);
-			fabricante.setNumero(Integer.parseInt(numero));
 			fabricante.setBairro(bairro);
 			fabricante.setComplemento(complemento);
-			fabricante.setCep(cep);
+			if(ramal != null && ramal.length()>0){
+				fabricante.setNumero(Integer.parseInt(numero));
+			}
+			fabricante.setCidade(cidade);
 			fabricante.setUf(uf);
+			fabricante.setCep(cep);
 			fabricante.setTelefone(telefone);
-			fabricante.setResponsaveltecnico(responsaveltecnico);
-			fabricante.setCrresponsavel(crresponsavel);
-			
+			if(ramal != null && ramal.length()>0){
+				fabricante.setRamal(Integer.parseInt(ramal));
+			}
+			fabricante.setEmail(email);
+			fabricante.setSite(site);
+
 			repositorio.Save(fabricante);
 			
 			// Gera uma listagem de TODOS os Fabricantes

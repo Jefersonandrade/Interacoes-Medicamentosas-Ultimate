@@ -31,9 +31,6 @@ public class medicamentoController extends HttpServlet {
 	//Declaração do Repositório
 	MedicamentoRepository repositorio;
 	
-	//Declaração do Repositorio Principio Ativo
-	PrincipioAtivoRepository parepositorio;
-	
 	//Declaração do Repositorio Fabricantes
 	FabricanteRepository frepositorio;
     
@@ -44,8 +41,6 @@ public class medicamentoController extends HttpServlet {
       //Inicialização do Repositório
         repositorio = new MedicamentoRepository();
         
-     //Inicialização do Repositorio de Principio Ativo
-        parepositorio = new PrincipioAtivoRepository();
      
      //Inicialização do Repositorio Fabricantes
         frepositorio = new FabricanteRepository();
@@ -76,13 +71,9 @@ public class medicamentoController extends HttpServlet {
 			
 			//Puxando (Listando) dados de Fabricantes
 			FabricanteRepository frepositorio = new FabricanteRepository();
-			request.setAttribute("medicamentos", frepositorio.getAllbyName());
+			request.setAttribute("fabricantes", frepositorio.getAllbyName());
+			//request.setAttribute("medicamentos", frepositorio.getAllbyName());
 			
-			//Puxando (Listando) dados de Principios Ativos
-			PrincipioAtivoRepository prepositorio = new PrincipioAtivoRepository();
-			request.setAttribute("medicamentos", prepositorio.getAllByName());
-			
-		
 			//Chamar Página JSP
 			RequestDispatcher editar = request.getRequestDispatcher("medicamentoEditar.jsp");
 			editar.forward(request, response);
@@ -117,13 +108,12 @@ public class medicamentoController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			// Recebe os parâmetros do formulário
-			String cod = request.getParameter("id");
+			String cod = request.getParameter("cod");
 			String nome = request.getParameter("nomecomercial");
 			String registro = request.getParameter("numregistro");
 			String validade = request.getParameter("validade");
 			String formafarmaceutica = request.getParameter("formafarmaceutica");
-			PrincipioAtivo principioativo = parepositorio.Open(Integer.parseInt(request.getParameter("idprincipiosativos").toString()));
-			Fabricante fabricante = frepositorio.Open(Integer.parseInt(request.getParameter("idfabricantes").toString()));
+			Fabricante fabricante = frepositorio.Open(Integer.parseInt(request.getParameter("fabricantes").toString()));
 			
 			Medicamento medicamento;
 			
@@ -137,7 +127,6 @@ public class medicamentoController extends HttpServlet {
 			medicamento.setNumregistro(Integer.parseInt(registro));
 			medicamento.setValidade(validade);
 			medicamento.setFormafarmaceutica(formafarmaceutica);
-			medicamento.setPrincipioativo(principioativo);
 			medicamento.setFabricante(fabricante);
 			//Adicionar outros campos
 			repositorio.Save(medicamento);

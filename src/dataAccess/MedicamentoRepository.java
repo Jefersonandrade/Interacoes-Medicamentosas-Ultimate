@@ -50,12 +50,12 @@ public class MedicamentoRepository {
 		}
 	}
 	public List getTop10ByName(){
-		return manager.createQuery("select m from Medicamento m order by m.nome")
+		return manager.createQuery("select m from Medicamento m order by m.nomecomercial")
 		.setMaxResults(10).getResultList();
 	}
 	
 	public List getAllbyName(){
-		return manager.createQuery("select m from Medicamento m order by m.nome")
+		return manager.createQuery("select m from Medicamento m order by m.nomecomercial")
 		.getResultList();
 	}
 }
