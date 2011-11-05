@@ -38,8 +38,11 @@
 									<% Iterator it = fabricante.iterator();
 									while(it.hasNext()){
 										Fabricante f =(Fabricante)it.next(); %>
-										<option value="<%=f.getId() %>"><%=f.getNomefantasia()%></option>
-									
+										<%if(medicamento!= null && medicamento.getFabricante().getId()== f.getId()){ %>
+											<option value="<%=f.getId() %>" selected=\"selected\"><%=f.getNomefantasia()%></</option>
+										<%}else{%>
+											<option value="<%=f.getId() %>"><%=f.getNomefantasia()%></option>
+										<% }%>	
 									<%} %>
 								</select></td>
 							</tr>
@@ -57,7 +60,8 @@
 							  <td align="right">* Número Registro:</td>
 							  <td><input name="numregistro" type="text" id="numregistro" size="25" maxlength="45" value="<% if(medicamento != null){ out.print(medicamento.getNumregistro()); } %>" />
 							  * Validade: 
-								<input name="validade" type="text" id="validade" size="11" maxlength="10" value="" />
+								<input name="validade" type="text" id="validade" size="11" maxlength="10" value="<% if(medicamento != null){ out.print(medicamento.getValidade()); } %>" />
+							  (meses)
 							  </td>
 							</tr>
 							<tr>

@@ -72,7 +72,6 @@ public class medicamentoController extends HttpServlet {
 			//Puxando (Listando) dados de Fabricantes
 			FabricanteRepository frepositorio = new FabricanteRepository();
 			request.setAttribute("fabricantes", frepositorio.getAllbyName());
-			//request.setAttribute("medicamentos", frepositorio.getAllbyName());
 			
 			//Chamar Página JSP
 			RequestDispatcher editar = request.getRequestDispatcher("medicamentoEditar.jsp");
@@ -113,6 +112,7 @@ public class medicamentoController extends HttpServlet {
 			String registro = request.getParameter("numregistro");
 			String validade = request.getParameter("validade");
 			String formafarmaceutica = request.getParameter("formafarmaceutica");
+			//String fabricante = request.getParameter("fabricante");
 			Fabricante fabricante = frepositorio.Open(Integer.parseInt(request.getParameter("fabricantes").toString()));
 			
 			Medicamento medicamento;

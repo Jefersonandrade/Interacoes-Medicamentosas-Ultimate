@@ -164,27 +164,27 @@ public class reacaoController extends HttpServlet {
 				reacao = repositorio.Open(Integer.parseInt(cod));
 			else
 				reacao = new Reacao();
+	
+				reacao.setConduta(conduta);
+				reacao.setDiscussao(discussao);
+				reacao.setSumario(sumario);
+				reacao.setIdindicesriscos(indicerisco);
+				reacao.setIdindicesgravidades(indicegravidade);
+				reacao.setIdindicesconfiabilidades(indiceconfiabilidade);
+				reacao.setIdprincipiosativos(principioativo);
+				reacao.setIdprincipiosativos2(principioativo2);
+				
+				repositorio.Save(reacao);
 			
-			reacao.setConduta(conduta);
-			reacao.setDiscussao(discussao);
-			reacao.setSumario(sumario);
-			reacao.setIdindicesriscos(indicerisco);
-			reacao.setIdindicesgravidades(indicegravidade);
-			reacao.setIdindicesconfiabilidades(indiceconfiabilidade);
-			reacao.setIdprincipiosativos(principioativo);
-			reacao.setIdprincipiosativos2(principioativo2);
-			
-			repositorio.Save(reacao);
-			
-			//Gera uma listagem de reações
-			List reacoes = repositorio.getAllByName();
-			
-			// Passa a listagem para a página JSP
-			request.setAttribute("reacoes", reacoes);
-			
-			// Chamar a página JSP
-			RequestDispatcher listagem = request.getRequestDispatcher("reacoesListagem.jsp");
-			listagem.forward(request, response);
+				//Gera uma listagem de reações
+				List reacoes = repositorio.getAllByName();
+				
+				// Passa a listagem para a página JSP
+				request.setAttribute("reacoes", reacoes);
+				
+				// Chamar a página JSP
+				RequestDispatcher listagem = request.getRequestDispatcher("reacoesListagem.jsp");
+				listagem.forward(request, response);
 		}
 		catch(Exception ex){
 			ex.printStackTrace();

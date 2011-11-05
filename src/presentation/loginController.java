@@ -40,25 +40,23 @@ public class loginController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		// Recebe os parametros do formulario
 		
-		// Recebe os paratros do formulario
-		
-		try{
-		
+		try{			
 			String usuario = request.getParameter("username");
 			String senha = request.getParameter("senha");
-			
+	
 			Usuario user = repo.OpenByLogin(usuario);
 
 			if(user == null){
-				request.setAttribute("erro", "Senha/Login não conferem.");
-				request.getRequestDispatcher("login.jsp");
-			}
-			else {
+				request.setAttribute("erro", "Login inexistente!");
+				request.getRequestDispatcher("login.jsp").forward(request, response);
+				return;
+			}else {
 				if(user.getSenha().equalsIgnoreCase(senha)){
 					int id = user.getId();
 					HttpSession session = request.getSession();
-					session.setAttribute("user_id", Integer.toString(id));
+					session.setAttribute("usuario", Integer.toString(id));
 					if(user.getTipo().equalsIgnoreCase("admin")){
 						//Se for administrador vai para a pagina.jsp
 						request.getRequestDispatcher("cad.jsp").forward(request, response);
@@ -70,16 +68,12 @@ public class loginController extends HttpServlet {
 					}
 					
 					
-				}
-				else {
+				}else {
 					request.setAttribute("erro", "A senha não confere");
 					request.getRequestDispatcher("login.jsp").forward(request, response);
 					return;
 				}
-				
-				
 			}
-				
 		}
 		catch (Exception ex){
 			

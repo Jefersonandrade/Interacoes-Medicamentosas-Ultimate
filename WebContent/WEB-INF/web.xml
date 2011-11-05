@@ -10,7 +10,7 @@
   </filter>
   <filter-mapping>
   	<filter-name>Autenticacao</filter-name>
-  	<servlet-name>PrincipioAtivo</servlet-name>
+  	<servlet-name>PrincipioAtivo,Usuario,IndiceRisco,IndiceConfiabilidade,IndiceGravidade,Fabricante,Medicamento</servlet-name>
   </filter-mapping>
   <servlet>
     <description></description>

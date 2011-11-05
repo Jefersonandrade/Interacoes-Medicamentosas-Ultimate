@@ -11,11 +11,6 @@
 </head>
 
 <body>
-<% String erro = (String)request.getAttribute("erro"); 
- if(erro != null){
-	 %><p>Atencao! Aconteceu um erro: <%=erro %></p><% 
- }
-%>
 
 <div id="container">
 <form id="form_login" method="post" action="/InteracoesMedicamentosas/Login">
@@ -39,7 +34,19 @@
             <td>
             	<input id="password" type="password" name="senha"/>
             </td>
-
+		</tr>
+		<tr>
+			<td>
+				
+			</td>
+			<td>
+				<% String erro = (String)request.getAttribute("erro"); 
+					 if(erro != null){
+						 %><p>Atencao! <%=erro %></p><% 
+					 }
+				%>
+			</td>
+		</tr>
          </table>
       </div>      
 	  <div class="clear">

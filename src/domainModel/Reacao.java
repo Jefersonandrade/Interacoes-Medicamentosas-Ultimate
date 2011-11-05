@@ -32,23 +32,23 @@ public class Reacao {
 	@Column(name="sumario")
 	private String sumario;
 	
-	@ManyToOne(fetch=FetchType.LAZY, cascade={CascadeType.REFRESH})
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idindicesgravidades")
 	private IndiceGravidade idindicesgravidades;
 	
-	@ManyToOne(fetch=FetchType.LAZY, cascade={CascadeType.REFRESH})
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idindicesconfiabilidades")
 	private IndiceConfiabilidade idindicesconfiabilidades;
 	
-	@ManyToOne(fetch=FetchType.LAZY, cascade={CascadeType.REFRESH})
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idprincipiosativos1")
 	private PrincipioAtivo idprincipiosativos;
 	
-	@ManyToOne(fetch=FetchType.LAZY, cascade={CascadeType.REFRESH})
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idprincipiosativos2")
 	private PrincipioAtivo idprincipiosativos2;
 	
-	@ManyToOne(fetch=FetchType.LAZY, cascade={CascadeType.REFRESH})
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idindicesriscos")
 	private IndiceRisco idindicesriscos;
 
